@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import './Contact.css'
 import axios from 'axios';
+import toast from 'react-toastify';
 
 const Contact = () => {
     const [data,setData] = useState({
