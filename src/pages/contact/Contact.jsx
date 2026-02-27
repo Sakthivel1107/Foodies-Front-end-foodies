@@ -1,9 +1,12 @@
-import React, { useState } from 'react';
+import React, { useContext, useState } from 'react';
 import './Contact.css'
 import axios from 'axios';
 import { toast } from 'react-toastify';
+import StoreContext from '../../context/StoreContext'
+
 
 const Contact = () => {
+    const {token} = useContext(StoreContext);
     const [data,setData] = useState({
         "email":"",
         "firstName":"",
