@@ -2,7 +2,7 @@ import React, { useContext, useState } from 'react';
 import './Contact.css'
 import axios from 'axios';
 import { toast } from 'react-toastify';
-import StoreContext from '../../context/StoreContext'
+import { StoreContext } from '../../context/StoreContext'
 
 
 const Contact = () => {
