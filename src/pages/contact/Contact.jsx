@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import './Contact.css'
 import axios from 'axios';
-import {toast} from 'react-toastify';
+import { toast } from 'react-toastify';
 
 const Contact = () => {
     const [data,setData] = useState({
@@ -26,10 +26,12 @@ const Contact = () => {
         }
         try {
            const response = await axios.post("http://localhost:8080/api/mail",mail,{headers:{"Authorization":`Bearer ${token}`}});
-           toast.success(response);
+           if(!response.ok)
+           throw new Error(response);
+           toast.success("Message sent");
            console.log(response);
         } catch (error) {
-            toast.error(error);
+            toast.error("Message not sent");
         }
     }
   return (
