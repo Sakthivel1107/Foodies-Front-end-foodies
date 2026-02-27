@@ -44,7 +44,7 @@ const Contact = () => {
               <div className="col-lg-8">
                   <div className="contact-form p-5 shadow-sm bg-white">
                       <h2 className="text-center mb-4">Get in Touch</h2>
-                      <form onSubmit={(event) => onSubmitHandler}>
+                      <form onSubmit={onSubmitHandler}>
                           <div className="row g-3">
                               <div className="col-md-6">
                                   <input type="text" className="form-control custom-input" placeholder="First Name" name="firstName" onChange={(event) => onChangeHandler} />
