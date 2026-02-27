@@ -19,13 +19,13 @@ const Contact = () => {
 
     const onSubmitHandler = async (event) => {
         event.preventDefault();
-        const mail = {
-            name:data.firstName+" "+data.lastName,
-            email:data.email,
-            message:data.message
-        }
+        
+         const name = data.firstName+" "+data.lastName;
+         const email = data.email;
+         const message = data.message;
+        
         try {
-           const response = await axios.post("https://foodies-back-end-1.onrender.com/api/mail",mail,{headers:{"Authorization":`Bearer ${token}`}});
+           const response = await axios.post("https://foodies-back-end-1.onrender.com/api/mail",{name,email,message},{headers:{"Authorization":`Bearer ${token}`}});
            if(!response.ok)
            throw new Error(response);
            toast.success("Message sent");
