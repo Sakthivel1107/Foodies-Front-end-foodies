@@ -25,7 +25,7 @@ const Contact = () => {
             message:data.message
         }
         try {
-           const response = await axios.post("http://localhost:8080/api/mail",mail,{headers:{"Authorization":`Bearer ${token}`}});
+           const response = await axios.post("https://foodies-back-end-1.onrender.com/api/mail",mail,{headers:{"Authorization":`Bearer ${token}`}});
            if(!response.ok)
            throw new Error(response);
            toast.success("Message sent");
