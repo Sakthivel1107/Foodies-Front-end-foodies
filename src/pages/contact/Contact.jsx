@@ -26,7 +26,8 @@ const Contact = () => {
         }
         try {
            const response = await axios.post("http://localhost:8080/api/mail",mail,{headers:{"Authorization":`Bearer ${token}`}});
-           toast.success(response.text());
+           toast.success(response);
+           console.log(response);
         } catch (error) {
             toast.error(error);
         }
