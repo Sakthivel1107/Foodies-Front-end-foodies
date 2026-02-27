@@ -20,9 +20,9 @@ const Contact = () => {
     const onSubmitHandler = async (event) => {
         event.preventDefault();
         const mail = {
-            "name":data.firstName+" "+data.lastName,
-            "email":data.email,
-            "message":data.message
+            name:data.firstName+" "+data.lastName,
+            email:data.email,
+            message:data.message
         }
         try {
            const response = await axios.post("http://localhost:8080/api/mail",mail,{headers:{"Authorization":`Bearer ${token}`}});
