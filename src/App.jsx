@@ -12,6 +12,7 @@ import Login from './components/login/Login';
 import Register from './components/register/Register';
 import MyOrders from './pages/MyOrders/MyOrders';
 import { StoreContext } from './context/StoreContext';
+import Loader from './Loader/Loader';
 
 const App = () => {
   const {token} = useContext(StoreContext);
@@ -22,7 +23,7 @@ const App = () => {
       <Routes>
         <Route path='/' element={<Home />}></Route>
         <Route path='/explore' element={<ExploreFoods />}></Route>
-        <Route path='/contact' element={<Contact />}></Route>
+        <Route path='/contact' element={token ? <Contact /> : <Home />}></Route>
         <Route path='/food/:id' element={<FoodDetails />}></Route>
         <Route path='/cart' element={<Cart />}></Route>
         <Route path='/order' element={token ? <PlaceOrder /> : <Login /> }></Route>

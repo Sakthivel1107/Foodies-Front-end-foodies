@@ -43,6 +43,30 @@ export const StoreContextProvider = (props) => {
     };
 
     useEffect(()=>{
+        function setIsLoggedIn(token){
+            localStorage.setItem("token",token);
+        }
+        function logout(){
+            localStorage.setItem("token","");
+            setToken(null);
+        }
+        async function validateToken() {
+            const token = localStorage.getItem("token");
+
+            if (token) {
+                await axios.get(" https://foodies-back-end-1.onrender.com/api/validateToken", {
+                headers: {
+                    Authorization: `Bearer ${token}`
+                }
+                })
+                .then(() => {
+                setIsLoggedIn(token);
+                })
+                .catch(() => {
+                logout();
+                });
+            }
+        }
         async function loadData() {
             const data = await fetchFoodList();
             setFoodList(data);
@@ -51,6 +75,7 @@ export const StoreContextProvider = (props) => {
                 await loadCartData(localStorage.getItem("token"));
             }
         }
+        validateToken()
         loadData();
     },[]);
 
