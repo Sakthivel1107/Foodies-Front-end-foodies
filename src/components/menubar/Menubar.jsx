@@ -11,13 +11,13 @@ const Menubar = () => {
   const {quantity , token , setToken ,setQuantity} = useContext(StoreContext);
   const uniqueItemsInCart = Object.values(quantity).filter(qty => qty > 0).length;
   const navigateToContact = () => {
-    if(!token){
-      toast.error("Please Login before contact us!");
-      setActive('home');
-    }
-    else{
+    if(token){
       setActive('contact us');
       navigate('/contact');
+    }
+    else{
+      toast.error("Please Login before contact us!");
+      setActive('home');
     }
   }
   const logout = () => {
