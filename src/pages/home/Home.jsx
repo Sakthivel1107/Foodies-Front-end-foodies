@@ -11,11 +11,12 @@ const Home = () => {
   const { foodList } = useContext(StoreContext);
   return (
     foodList.Length === 0 ?
+    <Loader /> :
     <main className='container'>
         <Header />
         <ExploreMenu category = {category} setCategory = {setCategory}/>
         <FoodDisplay category = {category} searchText={''}/>
-    </main> : <Loader />
+    </main>
   )
 }
 
