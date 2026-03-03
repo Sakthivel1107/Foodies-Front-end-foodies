@@ -10,17 +10,6 @@ const Menubar = () => {
   const [active,setActive] = useState('home');
   const {quantity , token , setToken ,setQuantity} = useContext(StoreContext);
   const uniqueItemsInCart = Object.values(quantity).filter(qty => qty > 0).length;
-  const navigateToContact = () => {
-    console.log(token);
-    if(token){
-      setActive('contact us');
-      navigate('/contact');
-    }
-    else{
-      toast.error("Please Login before contact us!");
-      setActive('home');
-    }
-  }
   const logout = () => {
     localStorage.removeItem('token');
     setToken("");
@@ -45,7 +34,14 @@ const Menubar = () => {
                 <Link className={active === 'explore' ? "nav-link fw-bold active":"nav-link"} to="/explore" onClick={()=>setActive('explore')}>Explore</Link>
             </li>
             <li className="nav-item">
-                <Link className={active === 'contact us' ? "nav-link fw-bold active":"nav-link"} onClick={navigateToContact}>Contact Us</Link>
+                <Link className={active === 'contact us' ? "nav-link fw-bold active":"nav-link"} to="/contact" onClick={(e) => {
+      if (!token) {
+        e.preventDefault(); // stops navigation
+        toast.error("Please Login before contact us!");
+      } else {
+        setActive('contact us');
+      }
+    }}>Contact Us</Link>
             </li>
         </ul>
         <div className='d-flex align-items-center gap-4'>
