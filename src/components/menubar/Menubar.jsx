@@ -17,7 +17,7 @@ const Menubar = () => {
     }
     else{
       setActive('contact us');
-      navigate('navigate');
+      navigate('contact');
     }
   }
   const logout = () => {
