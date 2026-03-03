@@ -3,6 +3,7 @@ import { StoreContext } from '../../context/StoreContext';
 import axios from 'axios';
 import { assets } from '../../assets/assets';
 import "./MyOrders.css"
+import MyOrdersSkeleton from '../../components/MyOrdersSkeleton.jsx/MyOrdersSkeleton';
 
 const MyOrders = () => {
     const {token} = useContext(StoreContext);
@@ -26,8 +27,10 @@ const MyOrders = () => {
     
 return (
   <div className="container py-5">
-
-    {/* ================= MOBILE VIEW (Cards) ================= */}
+    {
+      data.token === 0 ? (<MyOrdersSkeleton />) :
+      <>
+      {/* ================= MOBILE VIEW (Cards) ================= */}
     <div className="d-md-none">
       {data &&
         data.map((order, index) => (
@@ -135,6 +138,9 @@ return (
         </tbody>
       </table>
     </div>
+      </>
+    }
+    
 
   </div>
 );
