@@ -8,14 +8,14 @@ import { useContext } from 'react';
 
 const Home = () => {
   const [category, setCategory] = useState('All');
-  const { token } = useContext(StoreContext);
+  const { foodList } = useContext(StoreContext);
   return (
-    token ?
+    foodList.Length === 0 ?
     <main className='container'>
         <Header />
         <ExploreMenu category = {category} setCategory = {setCategory}/>
         <FoodDisplay category = {category} searchText={''}/>
-    </main>:<Loader />
+    </main> : <Loader />
   )
 }
 
