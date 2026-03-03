@@ -14,6 +14,9 @@ const Menubar = () => {
       toast.error("Please Login before contact us!");
       setActive('home');
     }
+    else{
+      setActive('contact us');
+    }
   }
   const logout = () => {
     localStorage.removeItem('token');
@@ -39,7 +42,7 @@ const Menubar = () => {
                 <Link className={active === 'explore' ? "nav-link fw-bold active":"nav-link"} to="/explore" onClick={()=>setActive('explore')}>Explore</Link>
             </li>
             <li className="nav-item">
-                <Link className={active === 'contact us' ? "nav-link fw-bold active":"nav-link"} to="/contact" onClick={()=>setActive('contact us')}>Contact Us</Link>
+                <Link className={active === 'contact us' ? "nav-link fw-bold active":"nav-link"} to="/contact" onClick={navigateToContact}>Contact Us</Link>
             </li>
         </ul>
         <div className='d-flex align-items-center gap-4'>
