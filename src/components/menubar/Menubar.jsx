@@ -16,6 +16,7 @@ const Menubar = () => {
     }
     else{
       setActive('contact us');
+      navigate('navigate');
     }
   }
   const logout = () => {
@@ -42,7 +43,7 @@ const Menubar = () => {
                 <Link className={active === 'explore' ? "nav-link fw-bold active":"nav-link"} to="/explore" onClick={()=>setActive('explore')}>Explore</Link>
             </li>
             <li className="nav-item">
-                <Link className={active === 'contact us' ? "nav-link fw-bold active":"nav-link"} to="/contact" onClick={navigateToContact}>Contact Us</Link>
+                <Link className={active === 'contact us' ? "nav-link fw-bold active":"nav-link"} onClick={navigateToContact}>Contact Us</Link>
             </li>
         </ul>
         <div className='d-flex align-items-center gap-4'>
