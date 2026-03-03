@@ -2,7 +2,8 @@ import React, { useContext, useState } from 'react';
 import './Menubar.css'
 import {assets} from '../../assets/assets';
 import { Link, useNavigate } from 'react-router-dom';
-import { StoreContext } from '../../context/StoreContext'
+import { StoreContext } from '../../context/StoreContext';
+import { toast } from 'react-toastify';
 
 const Menubar = () => {
   const navigate = useNavigate();
