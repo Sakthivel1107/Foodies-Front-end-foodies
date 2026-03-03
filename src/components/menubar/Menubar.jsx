@@ -11,6 +11,7 @@ const Menubar = () => {
   const {quantity , token , setToken ,setQuantity} = useContext(StoreContext);
   const uniqueItemsInCart = Object.values(quantity).filter(qty => qty > 0).length;
   const navigateToContact = () => {
+    console.log(token);
     if(token){
       setActive('contact us');
       navigate('/contact');
