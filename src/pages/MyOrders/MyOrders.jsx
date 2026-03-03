@@ -28,7 +28,7 @@ const MyOrders = () => {
 return (
   <div className="container py-5">
     {
-      data.token === 0 ? (<MyOrdersSkeleton rows={8} />) :
+      data.length === 0 ? (<MyOrdersSkeleton rows={8} />) :
       <>
       {/* ================= MOBILE VIEW (Cards) ================= */}
     <div className="d-md-none">
