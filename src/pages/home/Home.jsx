@@ -10,7 +10,7 @@ const Home = () => {
   const [category, setCategory] = useState('All');
   const { foodList } = useContext(StoreContext);
   return (
-    foodList.Length === 0 ?
+    foodList.length === 0 ?
     <Loader /> :
     <main className='container'>
         <Header />
