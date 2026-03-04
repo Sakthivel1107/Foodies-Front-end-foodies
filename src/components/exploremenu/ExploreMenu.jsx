@@ -17,7 +17,7 @@ const ExploreMenu = ({category,setCategory}) => {
   return (
     <div className="explore-menu position-relative">
       <h1 className="d-flex align-items-center justify-content-between">
-        Exploure Our Menu
+        Explore Our Menu
       <div className='d-flex'>
         <i className="bi bi-arrow-left-circle scroll-icon" onClick={scrollLeft}></i>
         <i className="bi bi-arrow-right-circle scroll-icon" onClick={scrollRight}></i>

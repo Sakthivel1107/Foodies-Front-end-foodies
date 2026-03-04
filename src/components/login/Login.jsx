@@ -3,7 +3,8 @@ import './Login.css';
 import { Link, useNavigate } from 'react-router-dom';
 import { toast } from 'react-toastify';
 import { loginUser } from '../../services/authService';
-import {StoreContext} from '../../context/StoreContext'
+import {StoreContext} from '../../context/StoreContext';
+import { assets } from '../../assets/assets';
  
 const Login = () => {
   const {setToken , loadCartData} = useContext(StoreContext);
@@ -12,7 +13,7 @@ const Login = () => {
     "email":"",
     "password":""
   });
-
+  const [active,setActive] = useState(true);
   const onChangeHandler = (event) => {
     const name = event.target.name;
     const value = event.target.value;
@@ -56,7 +57,7 @@ const Login = () => {
               </div>
 
               <div className="d-grid">
-                <button className="btn btn-outline-primary text-uppercase" type="submit">Sign In</button>
+                <button className="btn btn-outline-primary text-uppercase" type="submit">{active ?("Sign In"):(<img src={assets.loading}></img>)}</button>
                 <button className="btn btn-outline-danger text-uppercase mt-3" type="reset">Reset</button>
               </div>
 
