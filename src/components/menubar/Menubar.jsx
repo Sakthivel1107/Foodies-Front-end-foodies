@@ -1,7 +1,7 @@
 import React, { useContext, useState } from 'react';
 import './Menubar.css'
 import {assets} from '../../assets/assets';
-import { Link, useNavigate } from 'react-router-dom';
+import { Link, useNavigate, NavLink } from 'react-router-dom';
 import { StoreContext } from '../../context/StoreContext';
 import { toast } from 'react-toastify';
 
@@ -28,20 +28,44 @@ const Menubar = () => {
     <div className="collapse navbar-collapse" id="navbarSupportedContent">
         <ul className="navbar-nav me-auto mb-2 mb-lg-0">
             <li className="nav-item">
-                <Link className={active === 'home' ? "nav-link fw-bold active":"nav-link"} to="/" onClick={()=>setActive('home')}>Home</Link>
+                {/* <Link className={active === 'home' ? "nav-link fw-bold active":"nav-link"} to="/" onClick={()=>setActive('home')}>Home</Link> */}
+                <NavLink
+                    to="/"
+                    end
+                    className={({ isActive }) =>
+                      isActive ? "nav-link active-link" : "nav-link"
+                    }
+                  >
+                    Home
+                </NavLink>
             </li>
             <li className="nav-item">
-                <Link className={active === 'explore' ? "nav-link fw-bold active":"nav-link"} to="/explore" onClick={()=>setActive('explore')}>Explore</Link>
+                {/* <Link className={active === 'explore' ? "nav-link fw-bold active":"nav-link"} to="/explore" onClick={()=>setActive('explore')}>Explore</Link> */}
+              <NavLink
+                to="/explore"
+                className={({ isActive }) =>
+                  isActive ? "nav-link active-link" : "nav-link"
+                }
+              ></NavLink>
             </li>
             <li className="nav-item">
-                <Link className={active === 'contact us' ? "nav-link fw-bold active":"nav-link"} to="/contact" onClick={(e) => {
-      if (!token) {
-        e.preventDefault(); // stops navigation
-        toast.error("Please Login before contact us!");
-      } else {
-        setActive('contact us');
-      }
-    }}>Contact Us</Link>
+                <NavLink
+                    to="/contact"
+                    className={({ isActive }) =>
+                      isActive
+                        ? "nav-link fw-bold active"
+                        : "nav-link"
+                    }
+                    onClick={(e) => {
+                      if (!token) {
+                        e.preventDefault(); // stop navigation
+                        toast.error("Please Login before Contact Us!");
+                      }
+                    }}
+                  >
+                    Contact Us
+              </NavLink>
+
             </li>
         </ul>
         <div className='d-flex align-items-center gap-4'>
