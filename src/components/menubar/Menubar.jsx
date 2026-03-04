@@ -33,7 +33,7 @@ const Menubar = () => {
                     to="/"
                     end
                     className={({ isActive }) =>
-                      isActive ? "nav-link active-link" : "nav-link"
+                      isActive ? "nav-link fw-bold active" : "nav-link"
                     }
                   >
                     Home
@@ -44,9 +44,9 @@ const Menubar = () => {
               <NavLink
                 to="/explore"
                 className={({ isActive }) =>
-                  isActive ? "nav-link active-link" : "nav-link"
+                  isActive ? "nav-link fw-bold active" : "nav-link"
                 }
-              ></NavLink>
+              >Explore</NavLink>
             </li>
             <li className="nav-item">
                 <NavLink
