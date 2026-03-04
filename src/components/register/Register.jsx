@@ -6,6 +6,7 @@ import { registerUser } from '../../services/authService';
  
 const Register = () => {
   const [data,setData] = useState({"name":"","email":"","password":""});
+  const [active,setActive] = useState(true);
   const onChangeHandler = (event) => {
     const name = event.target.name;
     const value = event.target.value;
@@ -14,6 +15,7 @@ const Register = () => {
   const navigate = useNavigate();
   const onSubmitHandler = async (event) => {
     event.preventDefault();
+    setActive(false);
     try {
       const response = await registerUser(data);
       if(response.status == 201){
@@ -26,7 +28,7 @@ const Register = () => {
     } catch (error) {
       toast.error("Unable to register. Please try again");
     }
-    
+    setActive(true);
   }
   return (
     <div className="register-container">
@@ -50,7 +52,13 @@ const Register = () => {
               </div>
 
               <div className="d-grid">
-                <button className="btn btn-outline-primary text-uppercase" type="submit">Sign Up</button>
+                <button className="btn btn-outline-primary text-uppercase" type="submit">{active ? ("Sign Up") : (<>
+                    <span
+                      className="spinner-border spinner-border-sm me-2"
+                      role="status"
+                    ></span>
+                    Loading...
+                  </>)}</button>
                 <button className="btn btn-outline-danger text-uppercase mt-3" type="reset">Reset</button>
               </div>
 
