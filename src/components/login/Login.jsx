@@ -22,6 +22,7 @@ const Login = () => {
 
   const onSubmitHandler = async (event) => {
     event.preventDefault();
+    setActive(false);
     try {
       const response = await loginUser(data);
   
@@ -37,6 +38,7 @@ const Login = () => {
     } catch (error) {
       toast.error("Unable to login. Please try again");
     }
+    setActive(true);
   }
 
   return (
