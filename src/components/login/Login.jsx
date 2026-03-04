@@ -4,7 +4,6 @@ import { Link, useNavigate } from 'react-router-dom';
 import { toast } from 'react-toastify';
 import { loginUser } from '../../services/authService';
 import {StoreContext} from '../../context/StoreContext';
-import { assets } from '../../assets/assets';
  
 const Login = () => {
   const {setToken , loadCartData} = useContext(StoreContext);
@@ -59,7 +58,14 @@ const Login = () => {
               </div>
 
               <div className="d-grid">
-                <button className="btn btn-outline-primary text-uppercase" type="submit" disabled={!active}>{active ?("Sign In"):(<img src={assets.loading} style={{ height: "22px", width: "22px" }}></img>)}</button>
+                <button className="btn btn-outline-primary text-uppercase" type="submit" disabled={!active}>{active ?("Sign In"):(<>
+                    <span
+                      className="spinner-border spinner-border-sm me-2"
+                      role="status"
+                    ></span>
+                    Loading...
+                  </>)}
+                </button>
                 <button className="btn btn-outline-danger text-uppercase mt-3" type="reset">Reset</button>
               </div>
 

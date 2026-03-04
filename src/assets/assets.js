@@ -9,13 +9,11 @@ import pizza from './pizza.png';
 import rolls from './roll.png';
 import salad from './salad.png';
 import userIcon from './profile.jpg';
-import loading from './loading.gif';
 
 export const assets = {
     logo,
     cart,
-    userIcon,
-    loading
+    userIcon
 };
 
 export const categories = [
