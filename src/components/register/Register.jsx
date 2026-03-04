@@ -52,7 +52,7 @@ const Register = () => {
               </div>
 
               <div className="d-grid">
-                <button className="btn btn-outline-primary text-uppercase" type="submit">{active ? ("Sign Up") : (<>
+                <button className="btn btn-outline-primary text-uppercase" type="submit" disabled={!active}>{active ? ("Sign Up") : (<>
                     <span
                       className="spinner-border spinner-border-sm me-2"
                       role="status"
