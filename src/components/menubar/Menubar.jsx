@@ -60,6 +60,7 @@ const Menubar = () => {
                       if (!token) {
                         e.preventDefault(); // stop navigation
                         toast.error("Please Login before Contact Us!");
+                        navigate('/login');
                       }
                     }}
                   >
