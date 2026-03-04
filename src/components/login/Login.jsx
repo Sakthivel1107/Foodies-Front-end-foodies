@@ -59,7 +59,7 @@ const Login = () => {
               </div>
 
               <div className="d-grid">
-                <button className="btn btn-outline-primary text-uppercase" type="submit">{active ?("Sign In"):(<img src={assets.loading}></img>)}</button>
+                <button className="btn btn-outline-primary text-uppercase" type="submit" disabled={!active}>{active ?("Sign In"):(<img src={assets.loading} style={{ height: "22px" }}></img>)}</button>
                 <button className="btn btn-outline-danger text-uppercase mt-3" type="reset">Reset</button>
               </div>
 
