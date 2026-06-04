@@ -2,6 +2,7 @@ import { createContext, useEffect, useState } from "react";
 import { fetchFoodList } from "../services/foodService";
 import axios from "axios";
 import { decreaseQtyFromCart, getCartData, increateQtyToCart } from "../services/cartService";
+import { toast } from "react-toastify";
 
 export const StoreContext = createContext(null);
 
@@ -11,12 +12,22 @@ export const StoreContextProvider = (props) => {
     const [foodList,setFoodList] = useState([]);
     const [quantity,setQuantity] = useState({});
     const increaseQuantity = async (foodId) => {
-        setQuantity(prev => ({...prev,[foodId]:(prev[foodId] || 0)+1}));
-        await increateQtyToCart(foodId,token);
+        if(localStorage.getItem("token")){
+            setQuantity(prev => ({...prev,[foodId]:(prev[foodId] || 0)+1}));
+            await increateQtyToCart(foodId,token);
+        }
+        else{
+            toast.warning("Please login to add items to the cart");
+        }
     }
     const decreaseQuantity = async (foodId) => {
-        setQuantity(prev => ({...prev,[foodId]:prev[foodId]>0 ? prev[foodId]-1 : 0}));
-        await decreaseQtyFromCart(foodId,token);
+        if(localStorage.getItem("token")){
+            setQuantity(prev => ({...prev,[foodId]:prev[foodId]>0 ? prev[foodId]-1 : 0}));
+            await decreaseQtyFromCart(foodId,token);
+        }
+        else{
+            toast.warning("Please login to remove items from the cart");
+        }
     }
     const removeItemFromCart = (foodId) => {
         setQuantity((prevQuantity) => {
