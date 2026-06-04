@@ -21,13 +21,8 @@ export const StoreContextProvider = (props) => {
         }
     }
     const decreaseQuantity = async (foodId) => {
-        if(localStorage.getItem("token")){
-            setQuantity(prev => ({...prev,[foodId]:prev[foodId]>0 ? prev[foodId]-1 : 0}));
-            await decreaseQtyFromCart(foodId,token);
-        }
-        else{
-            toast.warning("Please login to remove items from the cart");
-        }
+        setQuantity(prev => ({...prev,[foodId]:prev[foodId]>0 ? prev[foodId]-1 : 0}));
+        await decreaseQtyFromCart(foodId,token);
     }
     const removeItemFromCart = (foodId) => {
         setQuantity((prevQuantity) => {
