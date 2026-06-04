@@ -12,6 +12,9 @@ const Register = () => {
     const value = event.target.value;
     setData( data => ({...data,[name]:value}));
   }
+  const resetHandler = () => {
+    setData({"name":"","email":"","password":""});
+  }
   const navigate = useNavigate();
   const onSubmitHandler = async (event) => {
     event.preventDefault();
@@ -59,7 +62,7 @@ const Register = () => {
                     ></span>
                     Loading...
                   </>)}</button>
-                <button className="btn btn-outline-danger text-uppercase mt-3" type="reset">Reset</button>
+                <button className="btn btn-outline-danger text-uppercase mt-3" type="reset" onClick={resetHandler}>Reset</button>
               </div>
 
               <div className="mt-4">

@@ -18,7 +18,12 @@ const Login = () => {
     const value = event.target.value;
     setData(prev => ({...prev,[name]:value}));
   }
-
+  const resetHandler = () => {
+      setData({
+        "email":"",
+        "password":""
+      });
+  }
   const onSubmitHandler = async (event) => {
     event.preventDefault();
     setActive(false);
@@ -66,7 +71,7 @@ const Login = () => {
                     Loading...
                   </>)}
                 </button>
-                <button className="btn btn-outline-danger text-uppercase mt-3" type="reset">Reset</button>
+                <button className="btn btn-outline-danger text-uppercase mt-3" type="reset" onClick={resetHandler}>Reset</button>
               </div>
 
               <div className="mt-4">
